@@ -49,7 +49,8 @@ public class OAuthTokenInterceptor implements ClientHttpRequestInterceptor {
 			throws IOException {
 		String xsrfCookie = getXsrfCookie(username, password);
 		request.getHeaders().setBasicAuth(username, password);
-		request.getHeaders().set("X-XSRF-TOKEN", xsrfCookie);
+		request.getHeaders().set("X-XSRF-TOKEN", "34d7404b-9477-4949-a96b-65e9fe3678d3");
+		request.getHeaders().set("Cookie", "JSESSIONID=69D27732BDF0154054EC8E5CD7262E58; XSRF-TOKEN=34d7404b-9477-4949-a96b-65e9fe3678d3");
 		request.getHeaders().set("Content-Type", "application/json");
 		ClientHttpResponse response = execution.execute(request, body);
 	    return response;

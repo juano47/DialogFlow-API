@@ -16,16 +16,15 @@ public class DialogFlowService {
 	@Autowired
 	RestTemplate restTemplate;
 
-	public String createFolder(Map<String, Object> params) {
+	public void createFolder(Map<String, Object> params) {
 
 		String body = "" +
 				"{" +
-				"  'name': 'TEST/FOLDER/4/'," +
-				"  'parentId': '1630682963228'," +
-				"  'serverID': 'JACKRABBIT'" +
+				"  \"name\":\""+ params.get("folderName") + "\"," +
+				"  \"parentId\":\"" + params.get("parentId") + "\"," +
+				"  \"serverID\": \"JACKRABBIT\"" +
 				"}";
 		String url = ENDPOINT_SMC + "/api/folder";
-		Object result = restTemplate.postForObject(url, body, Object.class);
-		return "";
+		restTemplate.postForObject(url, body, Object.class);
 	}
 }

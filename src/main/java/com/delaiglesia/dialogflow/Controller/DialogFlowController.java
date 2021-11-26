@@ -40,7 +40,11 @@ public class DialogFlowController {
 				String result = "";
 				switch (displayName){
 					case "CreateFolder":
-						result = dialogFlowService.createFolder(params);
+						dialogFlowService.createFolder(params);
+						response.setFulfillmentText("The folder was created");
+						break;
+					default:
+						response.setFulfillmentText("todo oK!");
 						break;
 				}
 			}
@@ -49,7 +53,7 @@ public class DialogFlowController {
 			}
 
 
-			response.setFulfillmentText("todo oK!");
+
 			return new ResponseEntity<GoogleCloudDialogflowV2WebhookResponse>(response, HttpStatus.OK);
 		}
 		catch (Exception ex) {
